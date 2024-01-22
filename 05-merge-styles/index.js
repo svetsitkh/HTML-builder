@@ -19,10 +19,8 @@ async function getArrayOfStylesData(folderPath) {
           'utf-8',
         );
         const addChunkToArrayPromise = new Promise((resolve, reject) => {
-          readableStream.on('data', (chunk) => {
-            resultArray.push(chunk);
-            resolve(true);
-          });
+          readableStream.on('data', (chunk) => resultArray.push(chunk));
+          readableStream.on('end', resolve);
           readableStream.on('error', (error) => {
             console.error(`Error! ${error.message}`);
             reject(error);
