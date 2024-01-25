@@ -9,7 +9,7 @@ fs.readdir(folderPath, { withFileTypes: true }, (err, files) => {
   } else {
     files.forEach((file) => {
       if (file.isFile()) {
-        fs.stat(path.join(file.path, file.name), (err, stats) => {
+        fs.stat(path.join(folderPath, file.name), (err, stats) => {
           if (err) {
             console.log(err);
           } else {
